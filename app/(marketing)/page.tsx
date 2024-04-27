@@ -45,7 +45,7 @@ const MarketingPage = (): React.ReactNode => {
 				accomplish it all with Taskify
 			</div>
 			<Button className='mt-6' size='lg' asChild>
-				<Link href='/sing-up'>Get Taskify for free</Link>
+				<Link href='/sign-up'>Get Taskify for free</Link>
 			</Button>
 		</div>
 	);
