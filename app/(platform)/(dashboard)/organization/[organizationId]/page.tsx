@@ -1,22 +1,11 @@
-import { create } from '@/actions/create-board';
-import { Button } from '@/components/ui/button';
+import { Form } from './form';
 
-const Test = (): React.ReactNode => {
+const OrganizationIdPage = (): React.ReactNode => {
 	return (
 		<div>
-			<form action={create}>
-				<input
-					id='title'
-					name='title'
-					placeholder='Enter a borad title'
-					required
-					className='border-black border p-1'
-				/>
-				<Button type='submit'>Submit</Button>
-			</form>
+			<Form />
 		</div>
 	);
 };
 
-export default Test;
-//
+export default OrganizationIdPage;
