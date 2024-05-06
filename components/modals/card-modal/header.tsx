@@ -25,6 +25,10 @@ export const Header = ({ data }: HeaderProps): React.ReactNode => {
 				queryKey: ['card', data.id]
 			});
 
+			void queryClient.invalidateQueries({
+				queryKey: ['card-logs', data.id]
+			});
+
 			toast.success(`Renamed to "${data.title}"`);
 			setTitle(data.title);
 		},

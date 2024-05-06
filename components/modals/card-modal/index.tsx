@@ -8,6 +8,8 @@ import { fetcher } from '@/lib/fetcher';
 import { Header } from './header';
 import { Description } from './description';
 import { Actions } from './actions';
+import { Activity } from './activity';
+import { type AuditLog } from '@prisma/client';
 
 export const CardModal = (): React.ReactNode => {
 	const id = useCardModal(state => state.id);
@@ -17,6 +19,11 @@ export const CardModal = (): React.ReactNode => {
 	const { data: cardData } = useQuery<CardWithList>({
 		queryKey: ['card', id],
 		queryFn: async () => await fetcher(`/api/cards/${id}`)
+	});
+
+	const { data: auditLogsData } = useQuery<AuditLog[]>({
+		queryKey: ['card-logs', id],
+		queryFn: async () => await fetcher(`/api/cards/${id}/logs`)
 	});
 
 	return (
@@ -30,6 +37,11 @@ export const CardModal = (): React.ReactNode => {
 								<Description.Skeleton />
 							) : (
 								<Description data={cardData} />
+							)}
+							{!auditLogsData ? (
+								<Activity.Skeleton />
+							) : (
+								<Activity items={auditLogsData} />
 							)}
 						</div>
 					</div>
