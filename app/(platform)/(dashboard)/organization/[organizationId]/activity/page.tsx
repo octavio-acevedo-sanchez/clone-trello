@@ -2,11 +2,14 @@ import { Suspense } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Info } from '../_components/info';
 import { ActivityList } from './_components/activity-list';
+import { checkSubscription } from '@/lib/subscription';
 
-const ActivityPage = (): React.ReactNode => {
+const ActivityPage = async (): Promise<JSX.Element> => {
+	const isPro = await checkSubscription();
+
 	return (
 		<div className='w-full'>
-			<Info />
+			<Info isPro={isPro} />
 			<Separator className='my-2' />
 			<Suspense fallback={<ActivityList.Skeleton />}>
 				<ActivityList />
