@@ -21,7 +21,7 @@ export const ActivityItem = ({ data }: ActivityItemProps): React.ReactNode => {
 					{generateLogMessage(data)}
 				</p>
 				<p className='text-sx text-muted-foreground'>
-					{format(new Date(`${data.createdAt}`), "MMM d, yyyy 'at' h:mm a")}
+					{format(new Date(data.createdAt), "MMM d, yyyy 'at' h:mm a")}
 				</p>
 			</div>
 		</li>
